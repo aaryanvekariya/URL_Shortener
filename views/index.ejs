@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="w-full max-w-lg bg-white p-6 rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold text-center mb-4">URL Shortener</h1>
+        <form action="/shorten" method="POST" class="mb-4">
+            <input type="url" name="longUrl" placeholder="Enter long URL" required class="w-full p-2 border rounded-md">
+            <button type="submit" class="w-full mt-2 bg-blue-500 text-white p-2 rounded-md">Shorten</button>
+        </form>
+        <h2 class="text-lg font-semibold mb-2">Shortened URLs:</h2>
+        <ul>
+            <% urls.forEach(url => { %>
+                <li class="mb-2 p-2 border rounded-md">
+                    <a href="/<%= url.shortId %>" target="_blank" class="text-blue-500 underline">
+                        http://localhost:8080/<%= url.shortId %>
+                    </a>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+</body>
+</html>
